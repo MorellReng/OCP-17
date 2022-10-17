@@ -46,4 +46,15 @@ public class PeriodTest {
 
         Assertions.assertThrows(UnsupportedTemporalTypeException.class, () -> localTime.plus(period));
     }
+
+    @Test
+    void isBeforeWorks() {
+        Period period = Period.ofWeeks(1);
+        LocalDate start = LocalDate.of(2022, 10, 1);
+        LocalDate end = LocalDate.of(2022, 10, 8);
+
+        Assertions.assertTrue(start.isBefore(end));
+        LocalDate plussed = start.plus(period);
+        Assertions.assertEquals(plussed, end);
+    }
 }
